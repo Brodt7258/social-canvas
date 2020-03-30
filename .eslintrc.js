@@ -21,6 +21,8 @@ module.exports = {
     "rules": {
         "react/jsx-filename-extension": [1, { "extensions": [".js", ".jsx"] }],
         "comma-dangle": ["error", "never"],
-        "max-len": ["error", { "code": 140, "ignoreTrailingComments": true }]
+        "max-len": ["error", { "code": 140, "ignoreTrailingComments": true }],
+        "no-console": ["error", { allow: ["warn", "error", "log"] }],
+        "arrow-body-style": "off"
     }
 };
