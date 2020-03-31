@@ -23,6 +23,8 @@ module.exports = {
         "comma-dangle": ["error", "never"],
         "max-len": ["error", { "code": 140, "ignoreTrailingComments": true }],
         "no-console": ["error", { allow: ["warn", "error", "log"] }],
-        "arrow-body-style": "off"
+        "arrow-body-style": "off",
+        "no-use-before-define": "off",
+        "import/prefer-default-export": "off"
     }
 };
