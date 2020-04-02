@@ -6,6 +6,7 @@ import { firestore } from './firebase';
 
 import LoginPage from './pages/LoginPage';
 import NavBar from './components/NavBar';
+import ProtectedRoute from './components/ProtectedRoute';
 
 function App() {
   useEffect(() => {
@@ -26,6 +27,9 @@ function App() {
           <Route path="/login">
             <LoginPage />
           </Route>
+          <ProtectedRoute path="/">
+            <h2>Protected Info</h2>
+          </ProtectedRoute>
         </Switch>
       </BrowserRouter>
     </div>
