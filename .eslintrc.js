@@ -25,6 +25,7 @@ module.exports = {
         "no-console": ["error", { allow: ["warn", "error", "log"] }],
         "arrow-body-style": "off",
         "no-use-before-define": "off",
-        "import/prefer-default-export": "off"
+        "import/prefer-default-export": "off",
+        "react/jsx-props-no-spreading": "off"
     }
 };

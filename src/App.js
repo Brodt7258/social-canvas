@@ -1,15 +1,13 @@
-import React, { useState, useEffect } from 'react';
+import React, { useEffect } from 'react';
 import './App.css';
+import { BrowserRouter, Switch, Route } from 'react-router-dom';
 
-import { firestore, auth, createUserProfileDocument } from './firebase';
+import { firestore } from './firebase';
 
-import SignIn from './components/SignIn';
-import { useLogOnChange } from './hooks/misc';
+import LoginPage from './pages/LoginPage';
+import NavBar from './components/NavBar';
 
 function App() {
-  const [currentUser, setCurrentUser] = useState(null);
-  useLogOnChange('currentUser', currentUser);
-
   useEffect(() => {
     const unSubPosts = firestore.collection('posts').onSnapshot((snapshot) => {
       const posts = snapshot.docs.map((e) => ({ id: e.id, ...e.data() }));
@@ -19,19 +17,17 @@ function App() {
     return unSubPosts;
   }, []);
 
-  useEffect(() => {
-    const unSubAuth = auth.onAuthStateChanged(async (userAuth) => {
-      const user = await createUserProfileDocument(userAuth);
-      setCurrentUser(user);
-    });
-
-    return unSubAuth;
-  }, []);
-
   return (
     <div className="App">
-      <SignIn />
-      <h2>App</h2>
+      <BrowserRouter>
+        <NavBar />
+        <h2>App</h2>
+        <Switch>
+          <Route path="/login">
+            <LoginPage />
+          </Route>
+        </Switch>
+      </BrowserRouter>
     </div>
   );
 }
